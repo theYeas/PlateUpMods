@@ -32,7 +32,10 @@ public sealed class WorldEvents
             OnWorldEnded(this, new WorldEndedArgs(_CurrentWorld));
         }
         _CurrentWorld = new Unity.World(newWorld);
-        OnWorldCreated(this, new WorldCreatedArgs(_CurrentWorld));
+        if (OnWorldCreated != null)
+        {
+            OnWorldCreated(this, new WorldCreatedArgs(_CurrentWorld));
+        }
     }
 
     /* 
